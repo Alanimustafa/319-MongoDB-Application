@@ -1,0 +1,23 @@
+<html>
+                <head>
+                    <title>Sedan Enventory</title>
+                </head>
+                <body style="background-color:#333f3c;">
+                    <h1 style="color:yellow">SEDAN</h1>
+                    <a style="color:orange" href="http://localhost:3000/sedans/">SEDAN  |</a>
+                    <a style="color:orange" href="http://localhost:3000/suvs/">  SUV  |</a>
+                    <a style="color:orange" href="http://localhost:3000/trucks/">TRUCK</a> <br> <a style="color:orange" href="http://localhost:3000/">Back</a>
+                    <br>
+                    <div style="color:white">
+                        <h2>Sedan Inventory</h2>
+                        <!-- Looping through the objectID -->
+                        <ul><% sedan.forEach(sedan=> { %>
+                            <li><a href="/sedans/<%= sedan._id %>" style="color:orange; text-decoration: none; " >
+                                    <%= sedan.year + ' - ' + sedan.make %>
+                                </a></li>
+                            <% }); %>
+                        </ul>
+                    
+                    </div>
+                </body>
+            </html>
