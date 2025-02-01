@@ -1,19 +1,24 @@
 <html>
                 <head>
-                    <title>Sedan Enventory</title>
+                    <title>Inventory</title>
                 </head>
                 <body style="background-color:#333f3c;">
-                    <h1 style="color:yellow">SEDAN</h1>
+                    <h1 style="color:yellow">Inventory</h1>
                     <a style="color:orange" href="http://localhost:3000/sedans/">SEDAN  |</a>
                     <a style="color:orange" href="http://localhost:3000/suvs/">  SUV  |</a>
-                    <a style="color:orange" href="http://localhost:3000/trucks/">TRUCK</a> <br> <a style="color:orange" href="http://localhost:3000/">Back</a>
+                    <a style="color:orange" href="http://localhost:3000/trucks/">TRUCK</a>
+                    <br> 
+                    <a style="color:orange" href="http://localhost:3000/">Back</a>
+                    <br>
+                    <a style="color:orange" href="http://localhost:3000/">HOME</a>
+
                     <br>
                     <div style="color:white">
-                        <h2>Sedan Inventory</h2>
+                        <h2> <%= vehicle.type %> </h2>
                         <!-- Looping through the objectID -->
-                        <ul><% sedan.forEach(sedan=> { %>
-                            <li><a href="/sedans/<%= sedan._id %>" style="color:orange; text-decoration: none; " >
-                                    <%= sedan.year + ' - ' + sedan.make %>
+                        <ul><% vehicle.forEach(vehicle=> { %>
+                            <li><a href="/sedans/<%= vehicle._id %>" style="color:orange; text-decoration: none; " >
+                                    <%= vehicle.year + ' - ' + vehicle.make + ' - ' + vehicle.model %>
                                 </a></li>
                             <% }); %>
                         </ul>

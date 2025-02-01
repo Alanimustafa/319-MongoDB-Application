@@ -1,0 +1,24 @@
+<html>
+                <head>
+                    <title><%= vehicle.year + '  ' + vehicle.make + ' - ' + vehicle.model%></title>
+                </head>
+                <body style="background-color:#333f3c;">
+                    <h1 style="color:yellow">MONGO DEALERSHIP </h1>
+                    <a style="color:orange" href="http://localhost:3000/sedans/">SEDAN  |</a>
+                    <a style="color:orange" href="http://localhost:3000/suvs/">  SUV  |</a>
+                    <a style="color:orange" href="http://localhost:3000/trucks/">TRUCK</a> 
+                    <br> 
+                    <a style="color:orange" href="http://localhost:3000/<%=vehicle.type %>s">Back</a>
+                    <br>
+                    <a style="color:orange" href="http://localhost:3000/">HOME</a>
+                    <div style="color:white">
+                        <h1 style="color:gray; display: flex; justify-self: center;">Vehicle details</h1>
+                        <h2 style="color:lightcoral"><%= vehicle.year + '  ' + vehicle.make + '  ' + vehicle.model%></h2>
+                        <h3> Type: <%= vehicle.type%></h3>
+                        <h3> Year: <%= vehicle.year%></h3>
+                        <h3> Make: <%= vehicle.make%></h3>
+                        <h3> Model: <%= vehicle.model%></h3>
+                        <h3> VIN: <%= vehicle.id%></h3>
+                    </div>
+                </body>
+            </html>

@@ -19,7 +19,8 @@ mongoose.connection.on('connected', () => console.log(`Connected to the database
 
 app.use(express.urlencoded({ extended: false })); // disabling extend the Body-Parser Middleware
 
-
+app.set('view engine', 'ejs');  // Set EJS as the template engine
+app.set('views', './views');    // Specify the directory for views
 
 // THE ROUTES
 
