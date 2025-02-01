@@ -18,8 +18,7 @@ app.use(express.urlencoded({ extended: true })); // Using the Body-Parser Middle
 
 // HOME PAGE/ ROOT ROUTE
 app.get("/", async (req, res) => {
-    res.send("Hello World");
-    //res.render("home.ejs")
+    res.render("homePage.ejs") ;
 });
 
 
