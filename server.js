@@ -16,6 +16,7 @@ const sedansRouter = require ('./routers/sedansRouter.js'); // Importing the sed
 
 const suvsRouter = require ('./routers/suvsRouter.js'); // Importing the suv vehicles router.
 
+const trucksRouter = require ('./routers/trucksRouter.js'); // Importing the truck vehicles router.
 
 
 // MIDDLEWARE
@@ -38,6 +39,7 @@ app.get("/", async (req, res) => {
 // using the routes
 app.use('/sedans', sedansRouter); // App using the SEDAN router
 app.use('/suvs', suvsRouter); // App using the SUV router
+app.use('/trucks', trucksRouter); // App using the TRUCK router
 
 
 // INDEX ROUTE

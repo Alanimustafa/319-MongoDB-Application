@@ -1,9 +1,10 @@
 // MONGOOSE TRUCK MODEL
 const mongoose = require('mongoose');
 
-// Create a schema for our SUV model
+// Create a schema for our TRUCK model
 const truckSchema = new mongoose.Schema({
-    year: Number,
+    type: String,
+    year: String,
     make: String,
     model: String,
     isAWD: Boolean,
@@ -11,5 +12,5 @@ const truckSchema = new mongoose.Schema({
     isHybrid: Boolean,
 });
 
-const Truck = mongoose.model("Book", truckSchema) // create our model!
-module.exports = Truck;
+const Truck = mongoose.model("Truck", truckSchema) 
+module.exports = Truck; // Sedan Schema Export.
