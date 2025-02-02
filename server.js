@@ -4,6 +4,10 @@ const app = express(); // Creating an instance of Express.
 const mongoose = require('mongoose'); // Requireing Mongoose.
 require('dotenv').config(); // Requireing dotenv.
 
+// I couldn't delete a document before adding this package
+const methodOverride = require('method-override'); // Requireing method-override
+app.use(methodOverride('_method')); // Using method-override
+
 // IMPORTING MODELS
 // const Sedan = require('./models/sedan.js'); // Requireing the Sedan model.
 

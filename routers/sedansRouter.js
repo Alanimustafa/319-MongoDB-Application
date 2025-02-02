@@ -33,7 +33,10 @@ sedansRouter.post ("/" , async (req, res) => {
          res.redirect("/sedans"); // Redirecting to the sedans route.
 });
 
-
+sedansRouter.delete("/:id", async (req, res) => {
+    await Sedan.findByIdAndDelete(req.params.id)
+    res.redirect("/sedans")
+});
 
 sedansRouter.get("/:id", async (req, res) => {
     const sedan = await Sedan.findById(req.params.id) // Finding a sedan by its ID.

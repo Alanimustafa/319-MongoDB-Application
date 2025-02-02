@@ -20,5 +20,8 @@
                         <h3> Model: <%= vehicle.model%></h3>
                         <h3> VIN: <%= vehicle.id%></h3>
                     </div>
+                    <form action="/<%=vehicle.type %>s/<%=vehicle.id%>?_method=DELETE" method="POST">
+                        <button type="submit">Delete</button>
+                    </form>
                 </body>
             </html>
