@@ -23,5 +23,9 @@
                     <form action="/<%=vehicle.type %>s/<%=vehicle.id%>?_method=DELETE" method="POST">
                         <button type="submit">Delete</button>
                     </form>
+                    <button>
+                        <a style="text-decoration: none;" href="/<%=vehicle.type %>s/<%= vehicle.id %>/update">Update Vehicle</a>
+                    </button>
+                    
                 </body>
             </html>

@@ -13,11 +13,13 @@ sedansRouter.route("/")
     
 });
 
+//creating a new sedan vehicle using the ejs file
 sedansRouter.get("/new", async (req, res) => {
     const sedansInventory = await Sedan.find()
     res.render("./vehicleViews/create.ejs", { vehicle: sedansInventory, type: "Sedan"}) ;
 });
 
+//posting a new sedan to the database
 sedansRouter.post ("/" , async (req, res) => {
     const { isAWD, isElectric, isHybrid } = req.body;
 
@@ -33,19 +35,46 @@ sedansRouter.post ("/" , async (req, res) => {
          res.redirect("/sedans"); // Redirecting to the sedans route.
 });
 
+// Deleting a sedan vehicle
 sedansRouter.delete("/:id", async (req, res) => {
     await Sedan.findByIdAndDelete(req.params.id)
     res.redirect("/sedans")
 });
 
+// Updating a sedan vehicle
+sedansRouter.put("/:id", async (req, res) => {
+    // Handle the 'isCompleted' checkbox data
+    const { isAWD, isElectric, isHybrid } = req.body;
+
+    // Converting "on" to true, and undefined or other values to false
+    const sedanData = {
+        ...req.body,
+        isAWD: isAWD === "on",
+        isElectric: isElectric === "on",
+        isHybrid: isHybrid === "on"
+    };
+
+    // Update SEDAN Vehicle
+    await Sedan.findByIdAndUpdate(req.params.id, req.body);
+
+    // Going back to SEDANS route
+    res.redirect(`/sedans/${req.params.id}`);
+});
+
+// Updating a sedan vehicle using the ejs file form
+sedansRouter.get("/:id/update", async (req, res) => {
+    const currentVehicle = await Sedan.findById(req.params.id)
+    console.log(currentVehicle)
+    res.render("vehicleViews/update.ejs", {
+        vehicle: currentVehicle, type: "Sedan"
+    });
+});
+
+// Showing a sedan vehicle by id parameter
 sedansRouter.get("/:id", async (req, res) => {
     const sedan = await Sedan.findById(req.params.id) // Finding a sedan by its ID.
     // console.log(sedan); // FOR TEST: Logging the sedan.
     res.render("./vehicleViews/show.ejs", { vehicle: sedan }) ;
 })
-// .delete(async (req, res) => {
-//     await Sedan.findByIdAndDelete(req.params.id)
-//     res.redirect("/sedans")
-// });;
 
 module.exports = sedansRouter; // Exporting the sedans router.

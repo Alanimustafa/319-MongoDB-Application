@@ -14,6 +14,8 @@ app.use(methodOverride('_method')); // Using method-override
 // Importing data from databases
 const sedansRouter = require ('./routers/sedansRouter.js'); // Importing the sedan vehicles router.
 
+const suvsRouter = require ('./routers/suvsRouter.js'); // Importing the suv vehicles router.
+
 
 
 // MIDDLEWARE
@@ -28,22 +30,16 @@ app.set('views', './views');    // Specify the directory for views
 
 // THE ROUTES
 
-
 // HOME PAGE/ ROOT ROUTE
 app.get("/", async (req, res) => {
     res.render("homePage.ejs") ;
 });
 
 // using the routes
-app.use('/sedans', sedansRouter); // App using the students router
+app.use('/sedans', sedansRouter); // App using the SEDAN router
+app.use('/suvs', suvsRouter); // App using the SUV router
 
 
-// app.get("/sedans", async (req, res) => {
-//     const sedansInventory = await Sedan.find() // Finding all the sedans in the database.
-//     console.log(sedansInventory);
-//     res.send(sedansInventory) ;
-//     // res.render("/views/sedans.ejs", { sedan: sedansInventory}) ;
-// });
 // INDEX ROUTE
 
 

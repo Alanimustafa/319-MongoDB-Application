@@ -12,5 +12,5 @@ const sedanSchema = new mongoose.Schema({
     isHybrid: Boolean,
 });
 
-const Sedan = mongoose.model("Sedan", sedanSchema) // create our model!
-module.exports = Sedan;
+const Sedan = mongoose.model("Sedan", sedanSchema) 
+module.exports = Sedan; // Sedan Schema Export.
