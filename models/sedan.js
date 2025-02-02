@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 // Create a schema for our SUV model
 const sedanSchema = new mongoose.Schema({
     type: String,
-    year: Number,
+    year: String,
     make: String,
     model: String,
     isAWD: Boolean,

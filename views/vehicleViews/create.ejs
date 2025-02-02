@@ -1,0 +1,44 @@
+<html>
+                <head>
+                    <title><%= vehicle.type %> - New Vehicle</title>
+                </head>
+                <body style="background-color:#333f3c;">
+                    <h1 style="color:yellow"><%= vehicle.type %> - New Vehicle</h1>
+                    <a style="color:orange" href="http://localhost:3000/sedans/">SEDAN  |</a>
+                    <a style="color:orange" href="http://localhost:3000/suvs/">  SUV  |</a>
+                    <a style="color:orange" href="http://localhost:3000/trucks/">TRUCK</a>
+                    <br> 
+                    <a style="color:orange" href="http://localhost:3000/">Back</a>
+                    <br>
+                    <a style="color:orange" href="http://localhost:3000/">HOME</a>
+                    <br>
+                    <div style="color:white">
+                        <h1>New vehicle</h1>
+                        <form action="/sedans" method="POST">
+                            <label for="type">Type:</label>
+                            <input type="text" name="type" id="type" />
+                            <br><br>
+                            <label for="year">Year:</label>
+                            <input type="text" name="year" id="year" />
+                            <br><br>
+                            <label for="make">Make:</label>
+                            <input type="text" name="make" id="make" />
+                            <br><br>
+                            <label for="model">Model:</label>
+                            <input type="text" name="model" id="model" />
+                            <br><br>
+                            <label for="isAWD">All Wheel Drive (AWD)</label>
+                            <input type="checkbox" name="isAWD" id="isAWD" />
+                            <br><br>
+                            <label for="isElectric">Electric Vehicle</label>
+                            <input type="checkbox" name="isElectric" id="isElectric" />
+                            <br><br>
+                            <label for="isHybrid">Hybrid Vehicle</label>
+                            <input type="checkbox" name="isHybrid" id="isHybrid" />
+                            <br><br>
+                            <button type="submit">Add Vehicle</button>    
+                        </form>
+                        
+                    </div>
+                </body>
+            </html>
