@@ -1,9 +1,9 @@
 <html>
                 <head>
-                    <title><%= vehicle.type %> - New Vehicle</title>
+                    <title><%= type %> - New Vehicle</title>
                 </head>
                 <body style="background-color:#333f3c;">
-                    <h1 style="color:yellow"><%= vehicle.type %> - New Vehicle</h1>
+                    <h1 style="color:yellow"><%= type %> - New Vehicle</h1>
                     <a style="color:orange" href="http://localhost:3000/sedans/">SEDAN  |</a>
                     <a style="color:orange" href="http://localhost:3000/suvs/">  SUV  |</a>
                     <a style="color:orange" href="http://localhost:3000/trucks/">TRUCK</a>
@@ -13,8 +13,8 @@
                     <a style="color:orange" href="http://localhost:3000/">HOME</a>
                     <br>
                     <div style="color:white">
-                        <h1>New vehicle</h1>
-                        <form action="/sedans" method="POST">
+                        <h1>New <%= type %> vehicle</h1>
+                        <form action="/<%= type %>s" method="POST">
                             <label for="type">Type:</label>
                             <input type="text" name="type" id="type" />
                             <br><br>

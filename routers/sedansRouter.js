@@ -9,13 +9,13 @@ sedansRouter.route("/")
 .get(async (req, res) => {
     const sedansInventory = await Sedan.find() // Finding all the sedans in the database.
     // console.log(sedansInventory); // FOR TEST: Logging the sedans inventory.
-    res.render("./vehicleViews/index.ejs", { vehicle: sedansInventory}) ;
+    res.render("./vehicleViews/index.ejs", { vehicle: sedansInventory, type: "Sedan"}) ;
     
 });
 
 sedansRouter.get("/new", async (req, res) => {
     const sedansInventory = await Sedan.find()
-    res.render("./vehicleViews/create.ejs", { vehicle: sedansInventory});
+    res.render("./vehicleViews/create.ejs", { vehicle: sedansInventory, type: "Sedan"}) ;
 });
 
 sedansRouter.post ("/" , async (req, res) => {
@@ -30,8 +30,6 @@ sedansRouter.post ("/" , async (req, res) => {
     };
 
     Sedan.create(sedanData)
-        // .then(sedan => res.status(201).json(sedan))
-        // .catch(err => res.status(400).json(err));  
          res.redirect("/sedans"); // Redirecting to the sedans route.
 });
 
@@ -41,6 +39,10 @@ sedansRouter.get("/:id", async (req, res) => {
     const sedan = await Sedan.findById(req.params.id) // Finding a sedan by its ID.
     // console.log(sedan); // FOR TEST: Logging the sedan.
     res.render("./vehicleViews/show.ejs", { vehicle: sedan }) ;
-});
+})
+// .delete(async (req, res) => {
+//     await Sedan.findByIdAndDelete(req.params.id)
+//     res.redirect("/sedans")
+// });;
 
 module.exports = sedansRouter; // Exporting the sedans router.

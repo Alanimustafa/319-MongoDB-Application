@@ -1,9 +1,9 @@
 <html>
                 <head>
-                    <title><%= vehicle.type %> Inventory</title>
+                    <title><%= type %> Inventory</title>
                 </head>
                 <body style="background-color:#333f3c;">
-                    <h1 style="color:yellow"><%= vehicle.type %> Inventory</h1>
+                    <h1 style="color:yellow"><%= type %> Inventory</h1>
                     <a style="color:orange" href="http://localhost:3000/sedans/">SEDAN  |</a>
                     <a style="color:orange" href="http://localhost:3000/suvs/">  SUV  |</a>
                     <a style="color:orange" href="http://localhost:3000/trucks/">TRUCK</a>
@@ -14,10 +14,10 @@
 
                     <br>
                     <div style="color:white">
-                        <h2> <%= vehicle.type %> Inventory</h2>
+                        <h2> <%= type %> Inventory</h2>
                         <!-- Looping through the objectID -->
                         <ul><% vehicle.forEach(vehicle=> { %>
-                            <li><a href="/sedans/<%= vehicle._id %>" style="color:orange; text-decoration: none; " >
+                            <li><a href="/<%= vehicle.type %>s/<%= vehicle._id %>" style="color:orange; text-decoration: none; " >
                                     <%= vehicle.year + ' - ' + vehicle.make + ' - ' + vehicle.model %>
                                 </a></li>
                             <% }); %>
