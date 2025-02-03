@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 // Create a schema for our SUV model
 const suvSchema = new mongoose.Schema({
-    type: String,
+    type: { type: String, required: true, default: "SUV" }, 
     year: String,
     make: String,
     model: String,

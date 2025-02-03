@@ -42,7 +42,21 @@ app.use('/suvs', suvsRouter); // App using the SUV router
 app.use('/trucks', trucksRouter); // App using the TRUCK router
 
 
-// INDEX ROUTE
+// (404) Error Middleware { error: "Resource Not Found" }
+app.use((req, res) => {
+    res.status(404);
+    res.send(`
+        <html>
+                <head>
+                    <title><%= type %> Inventory</title>
+                </head>
+                <body style="background-color:#333f3c;">
+                    <h2 style="color:red; border: solid orange 5px; display:flex; justify-self: center;">Error: 400 Page Not Found</h2>    
+                </body>
+            </html>
+        
+        `);
+  });
 
 
 
