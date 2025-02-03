@@ -11,16 +11,8 @@ trucksRouter.route("/")
     // console.log(trucksInventory); // FOR TEST: Logging the trucks inventory.
     res.render("./vehicleViews/index.ejs", { vehicle: trucksInventory, type: "Truck"}) ;
     
-});
-
-//creating a new truck vehicle using the ejs file
-trucksRouter.get("/new", async (req, res) => {
-    const trucksInventory = await Truck.find()
-    res.render("./vehicleViews/create.ejs", { vehicle: trucksInventory, type: "Truck"}) ;
-});
-
-//posting a new truck to the database
-trucksRouter.post ("/" , async (req, res) => {
+}) 
+.post ( async (req, res) => {
     const { isAWD, isElectric, isHybrid } = req.body;
 
     // Convert "on" to true, and undefined or other values to false
@@ -34,6 +26,15 @@ trucksRouter.post ("/" , async (req, res) => {
     Truck.create(truckData)
          res.redirect("/trucks"); // Redirecting to the trucks route.
 });
+
+//creating a new truck vehicle using the ejs file
+trucksRouter.get("/new", async (req, res) => {
+    const trucksInventory = await Truck.find()
+    res.render("./vehicleViews/create.ejs", { vehicle: trucksInventory, type: "Truck"}) ;
+});
+
+//posting a new truck to the database
+
 
 // Deleting a truck vehicle
 trucksRouter.delete("/:id", async (req, res) => {

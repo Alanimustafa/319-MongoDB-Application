@@ -11,7 +11,41 @@ suvsRouter.route("/")
     // console.log(suvsInventory); // FOR TEST: Logging the suvs inventory.
     res.render("./vehicleViews/index.ejs", { vehicle: suvsInventory, type: "Suv"}) ;
     
+})
+
+.post ( async (req, res) => {
+    try {
+        const { isAWD, isElectric, isHybrid } = req.body;
+
+        // Convert "on" to true, and undefined or other values to false
+        const suvData = {
+            ...req.body,
+            isAWD: isAWD === "on",
+            isElectric: isElectric === "on",
+            isHybrid: isHybrid === "on"
+        };
+    
+        Suv.create(suvData)
+             res.redirect("/suvs"); // Redirecting to the suvs route.
+    } catch (error) {
+        res.send(`
+            <html>
+                    <head>
+                        <title><%= type %> Inventory</title>
+                    </head>
+                    <body style="background-color:#333f3c;">
+                        <h2 style="color:red; border: solid orange 5px; display:flex; justify-self: center;">Error: ${error}</h2>    
+                        <h3 style="color:red; border: solid orange 5px; display:flex; justify-self: center;">Error: Tpye of the vehicle is required</h3>
+                        <br>
+                        <a style="color:orange" href="http://localhost:3000/">HOME</a>
+                    </body>
+                </html>
+            
+            `);
+    }
+
 });
+
 
 //creating a new suv vehicle using the ejs file
 suvsRouter.get("/new", async (req, res) => {
@@ -19,21 +53,7 @@ suvsRouter.get("/new", async (req, res) => {
     res.render("./vehicleViews/create.ejs", { vehicle: suvsInventory, type: "Suv"}) ;
 });
 
-//posting a new suv to the database
-suvsRouter.post ("/" , async (req, res) => {
-    const { isAWD, isElectric, isHybrid } = req.body;
 
-    // Convert "on" to true, and undefined or other values to false
-    const suvData = {
-        ...req.body,
-        isAWD: isAWD === "on",
-        isElectric: isElectric === "on",
-        isHybrid: isHybrid === "on"
-    };
-
-    Suv.create(suvData)
-         res.redirect("/suvs"); // Redirecting to the suvs route.
-});
 
 // Deleting a suv vehicle
 suvsRouter.delete("/:id", async (req, res) => {

@@ -11,6 +11,38 @@ sedansRouter.route("/")
     // console.log(sedansInventory); // FOR TEST: Logging the sedans inventory.
     res.render("./vehicleViews/index.ejs", { vehicle: sedansInventory, type: "Sedan"}) ;
     
+})
+//posting a new sedan to the database
+.post ( async (req, res) => {
+    try {
+        const { isAWD, isElectric, isHybrid } = req.body;
+
+        // Convert "on" to true, and undefined or other values to false
+        const sedanData = {
+            ...req.body,
+            isAWD: isAWD === "on",
+            isElectric: isElectric === "on",
+            isHybrid: isHybrid === "on"
+        };
+    
+        Sedan.create(sedanData)
+             res.redirect("/sedans"); // Redirecting to the sedans route.
+    } catch (error) {
+        res.send(`
+            <html>
+                    <head>
+                        <title><%= type %> Inventory</title>
+                    </head>
+                    <body style="background-color:#333f3c;">
+                        <h2 style="color:red; border: solid orange 5px; display:flex; justify-self: center;">Error: ${error}</h2>    
+                        <h3 style="color:red; border: solid orange 5px; display:flex; justify-self: center;">Error: Tpye of the vehicle is required</h3>
+                        <br>
+                        <a style="color:orange" href="http://localhost:3000/">HOME</a>
+                    </body>
+                </html>
+            
+            `);
+    }
 });
 
 //creating a new sedan vehicle using the ejs file
@@ -19,21 +51,7 @@ sedansRouter.get("/new", async (req, res) => {
     res.render("./vehicleViews/create.ejs", { vehicle: sedansInventory, type: "Sedan"}) ;
 });
 
-//posting a new sedan to the database
-sedansRouter.post ("/" , async (req, res) => {
-    const { isAWD, isElectric, isHybrid } = req.body;
 
-    // Convert "on" to true, and undefined or other values to false
-    const sedanData = {
-        ...req.body,
-        isAWD: isAWD === "on",
-        isElectric: isElectric === "on",
-        isHybrid: isHybrid === "on"
-    };
-
-    Sedan.create(sedanData)
-         res.redirect("/sedans"); // Redirecting to the sedans route.
-});
 
 // Deleting a sedan vehicle
 sedansRouter.delete("/:id", async (req, res) => {
